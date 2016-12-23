@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>{{ quiz.fields.name }}</title>
+    </head>
+    <body>
+        <h1>{{ quiz.fields.name }}</h1>
+
+        {% for question in quiz.fields.questions %}
+        <h3>{{ question.text }}</h3>
+        <p>question.answer1</p>
+        <p>question.answer2</p>
+        <p>question.answer3</p>
+        <p>question.answer4</p>
+        <br /><br />
+        {% endfor %}
+
+    </body>
+</html>

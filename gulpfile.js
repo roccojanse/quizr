@@ -18,4 +18,4 @@ var getAllTasks = function() {
 
 getAllTasks();
 
-gulp.task('default', ['scripts:compile']);
+gulp.task('default', ['scripts:compile', 'html:copy']);

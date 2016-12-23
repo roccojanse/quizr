@@ -2,7 +2,7 @@
   "name": "quizr",
   "version": "0.0.1",
   "description": "Quiz creator based on NodeJS and Websockets",
-  "main": "index.js",
+  "main": "./src/server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,6 +40,10 @@
     "jshint-stylish": "^2.2.1"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "contentful": "^3.8.0",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
+    "nunjucks": "^3.0.0"
   }
 }
