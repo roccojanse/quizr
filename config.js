@@ -1,9 +1,12 @@
 'use strict';
 
 let fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    pkg = require('./package');
 
 module.exports =  {
+
+    name: pkg.name + ' ' + pkg.version,
 
     gulpTaskPath: './gulp/tasks',
 
@@ -16,11 +19,15 @@ module.exports =  {
         secret: 'ilovescotchyscotch'
     },
 
-    clientFileName: 'quizr-client',
-    serverFileName: 'quizr-server',
+    clientFileName: 'quizr',
     
     srcPath: './src',
     destPath: './dist',
+
+    paths: {
+        css: '/css',
+        js: '/js'
+    },
 
     vendor: {
         // canvg: [

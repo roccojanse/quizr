@@ -8,7 +8,8 @@ let config = require('../../config'),
     contentful = require('contentful'),
     
     app = express(),
-    io = require('socket.io')(app),
+    server = http.createServer(app),
+    io = require('socket.io')(server),
 
     client = contentful.createClient({
         space: '3ldr1bchss3v',
@@ -41,17 +42,32 @@ app.get('/', (req, res) => {
 
     // console.log(res);
 
-    res.render('index.html', { title: 'Quizrrr 0.1' });
+    res.render('index.html', {
+        config: config,
+        meta: {
+            title: config.name
+        },
+        title: config.name 
+    });
 
 });
 
 // routes
 app.use('/quizes', quizes);
 
+io.on('connection', (socket) => {
+    console.log('CONNECTED!');
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
 // create server(s)
-let server = http.createServer(app).listen(config.server.port, () => {
+server.listen(config.server.port, () => {
     console.log(`Server stated at http://${config.server.address}:${config.server.port}.`);
 });
 // let server = https.createServer({ key: config.server.sshKey, cert: config.server.sshCert }, app).listen(config.server.port, () => {
 //     console.log(`Server stated at https://${config.server.address}:${config.server.port}.`);
 // });
+
