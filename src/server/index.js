@@ -5,22 +5,19 @@ let config = require('../../config'),
     http = require('http'),
     https = require('https'),
     nunjucks = require('nunjucks'),
-
     contentful = require('contentful'),
-
-    quizes = require('./modules/routers/quizes');
-
-let app = express(),
+    
+    app = express(),
+    io = require('socket.io')(app),
 
     client = contentful.createClient({
         space: '3ldr1bchss3v',
         accessToken: '88c554ef3373b7cbbf84c018dfda35d47637bbc1a63f170cfedbd38f2d77bc59'
-    });
+    }),
 
+    quizes = require('./modules/routers/quizes');
 
-// set static server root
-//app.use(express.static(config.server.root));
-
+// nunjucks config
 nunjucks.configure(config.server.root, {
     autoescape: true,
     express: app
@@ -48,11 +45,13 @@ app.get('/', (req, res) => {
 
 });
 
+// routes
 app.use('/quizes', quizes);
 
+// create server(s)
 let server = http.createServer(app).listen(config.server.port, () => {
-        console.log(`Server stated at http://${config.server.address}:${config.server.port}.`);
-    });
+    console.log(`Server stated at http://${config.server.address}:${config.server.port}.`);
+});
 // let server = https.createServer({ key: config.server.sshKey, cert: config.server.sshCert }, app).listen(config.server.port, () => {
 //     console.log(`Server stated at https://${config.server.address}:${config.server.port}.`);
 // });

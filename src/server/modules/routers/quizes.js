@@ -15,7 +15,7 @@ let express = require('express'),
 //   next();
 // });
 
-// define the home page route
+// define the quizes overview
 router.get('/', (req, res) => {
 
     // get all current quizes
@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// define the about route
+// define the detailview
 router.get('/:id', (req, res) => {
 
 
