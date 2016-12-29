@@ -1,7 +1,6 @@
 'use strict';
 
 let express = require('express'),
-    //nunjucks = require('nunjucks'),
     router = express.Router(),
 
     contentful = require('contentful'),
@@ -9,12 +8,6 @@ let express = require('express'),
         space: '3ldr1bchss3v',
         accessToken: '88c554ef3373b7cbbf84c018dfda35d47637bbc1a63f170cfedbd38f2d77bc59'
     });
-
-// nunjucks.configure(config.server.root, {
-//     autoescape: true,
-//     express: app
-// });
-
 
 // // middleware that is specific to this router
 // router.use(function timeLog(req, res, next) {
