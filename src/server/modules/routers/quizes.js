@@ -1,6 +1,7 @@
 'use strict';
 
-let express = require('express'),
+let config = require('../../../../config'),
+    express = require('express'),
     router = express.Router(),
 
     contentful = require('contentful'),
@@ -27,6 +28,10 @@ router.get('/', (req, res) => {
         // logs the entry metadata
         quizes = entries;
         res.render('quizes/overview.html', { 
+            config: config,
+            meta: {
+                title: `${config.name} v${config.version}`
+            },
             title: 'Current created Quizes',
             quizes: quizes 
         });
@@ -50,6 +55,10 @@ router.get('/:id', (req, res) => {
         console.log(questions);
 
         res.render('quizes/detail.html', { 
+            config: config,
+            meta: {
+                title: `${config.name} v${config.version}`
+            },
             quiz: quiz,
             questions: questions
         });

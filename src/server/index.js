@@ -24,6 +24,10 @@ nunjucks.configure(config.server.root, {
     express: app
 });
 
+app.use('/css', express.static(__dirname + '/../public/css'));
+app.use('/js', express.static(__dirname + '/../public/js'));
+
+
 // routing
 app.get('/', (req, res) => {
 
@@ -45,7 +49,7 @@ app.get('/', (req, res) => {
     res.render('index.html', {
         config: config,
         meta: {
-            title: config.name
+            title: `${config.name} v${config.version}`
         },
         title: config.name 
     });

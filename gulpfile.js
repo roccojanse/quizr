@@ -18,5 +18,5 @@ var getAllTasks = function() {
 
 getAllTasks();
 
-gulp.task('default', ['scripts:compile', 'html:copy']);
+gulp.task('default', ['scripts:compile', 'scripts:build', 'styles:build', 'vendor:build', 'html:copy']);
 gulp.task('server', ['nodemon']);

@@ -6,7 +6,8 @@ let fs = require('fs'),
 
 module.exports =  {
 
-    name: pkg.name + ' ' + pkg.version,
+    name: pkg.name,
+    version: pkg.version,
 
     gulpTaskPath: './gulp/tasks',
 
@@ -30,6 +31,13 @@ module.exports =  {
     },
 
     vendor: {
+        jquery: [
+            './node_modules/jquery/dist/jquery.min.js'
+        ],
+        bootstrap: [
+            './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+            './node_modules/responsive-toolkit/dist/bootstrap-toolkit.min.js'
+        ]
         // canvg: [
         //     "./node_modules/canvg-fixed/rbgColor.js",
         //     "./node_modules/canvg-fixed/StackBlur.js",

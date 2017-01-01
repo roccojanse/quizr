@@ -1,8 +1,7 @@
-<html>
-    <head>
-        <title>{{ quiz.fields.name }}</title>
-    </head>
-    <body>
+{% extends "includes/master.inc.html" %}
+
+{% block body %}
+
         <h1>{{ quiz.fields.name }}</h1>
 
         {% for question in quiz.fields.questions %}
@@ -14,5 +13,4 @@
         <br /><br />
         {% endfor %}
 
-    </body>
-</html>
+{% endblock %}
